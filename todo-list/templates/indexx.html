@@ -3,37 +3,45 @@
   <head>
     <meta charset="utf-8" />
     <title>DBP</title>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-   document.querySelector('#new-task').onsubmit = () => {
-   const cb = document.createElement("INPUT");
-cb.setAttribute("type", "checkbox");
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('#new-task').onsubmit = () => {
+          const cb = document.createElement("INPUT");
+          cb.setAttribute("type", "checkbox");
 
-            const li = document.createElement('li');
-            li.appendChild(cb);
-li.innerHTML += document.querySelector('#task').value;
+          const li = document.createElement('li');
+          li.appendChild(cb);
+          li.innerHTML += document.querySelector('#task').value;
 
-            document.querySelector('#tasks').append(li);
+          const deleteBtn = document.createElement('button');
+          deleteBtn.innerHTML = 'X';
+          deleteBtn.onclick = function() {
+            this.parentNode.remove();
+          };
+          li.appendChild(deleteBtn);
 
-            document.querySelector('#task').value = '';
+          document.querySelector('#tasks').append(li);
 
-            return false;
+          document.querySelector('#task').value = '';
+
+          return false;
         };
-
-    });
+      });
     </script>
-
   </head>
   <body>
     <p>Computer Science</p>
-<h1>Tasks</h1>
-<form id="new-task">
-        <input id="task" autocomplete="off"
-autofocus placeholder="New Task"
-type="text">
-        <input type="submit">
+    <h1>Tasks</h1>
+    <form id="new-task">
+      <input
+        id="task"
+        autocomplete="off"
+        autofocus
+        placeholder="New Task"
+        type="text"
+      />
+      <input type="submit" />
     </form>
-    <ol id="tasks">
-    </ol>
+    <ol id="tasks"></ol>
   </body>
 </html>
